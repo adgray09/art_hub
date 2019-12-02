@@ -1,0 +1,27 @@
+<!-- templates/playlists_new.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/pieces'>
+    <fieldset>
+    <legend>New Art Piece</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='title'>Title</label><br>
+        <input type='text' name='title' />
+    </p>
+    <p>
+        <label for='description'>Description of Art</label><br>
+        <input type='text' name='description' />
+    </p>
+    <p>
+        <label for="price">Price</label><br>
+        <input type='text' name='price' />
+    </p>
+    </fieldset>
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Your Artwork</button>
+    </p>
+</form>
+{% endblock %}

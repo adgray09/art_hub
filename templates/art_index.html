@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1 style="color: green;"align="center">Artlister</h1>
+    <button><a href='/art/new'>Add your Art!</a></button>
+
+    {% if art_items %}
+        {% for art in art_items %}
+        <h3><a href='/art/{{ art._id }}'>{{ art.title }}</a></h3>
+            <small>{{ art.description }}</small>
+            <small>{{ art.price }}</small>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
