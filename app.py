@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 #Home page route
-def store_index():
+def art_index():
     art_items = pieces.find()
     return render_template ('art_index.html', art_items=art_items)
 
@@ -26,13 +26,14 @@ def submit_art():
     added_art = {
         'title': request.form.get('title'),
         'description': request.form.get('description'),
-        'price': request.form.get('price')
+        'price': request.form.get('price'),
+        'url': request.form.get('url')
     }
-    print(added_art)
-    pieces.insert_one(added_art)
-    return redirect(url_for('store_index')) # <--------- has to be the app.route's method that renders art_index
+    piece_id = pieces.insert_one(added_art).inserted_id
+    return redirect(url_for('art_show', piece_id=piece_id)) # <--------- has to be the app.route's method that renders art_index
 
 @app.route('/art/<piece_id>')
+#look at one art piece
 def art_show(piece_id):
     art = pieces.find_one({'_id': ObjectId(piece_id)})
     return render_template('art_show.html', art=art)
