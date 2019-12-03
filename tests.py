@@ -1,0 +1,65 @@
+from unittest import TestCase, main as unittest_main, mock
+from bson.objectid import ObjectId
+from app import app
+
+sample_id_list = ['hY7m5jjJ9mM','CQ85sUNBK7w']
+# All of these are new mock data that we'll use
+sample_piece_id = ObjectId('5d55cffc4a3d4031f42827a3')
+sample_piece = {
+    'title': 'Cat Videos',
+    'description': 'Cats acting weird',
+    'price': '22',
+    'url': 'data:image/jpeg;base64,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'
+}
+sample_form_data = {
+    'title': sample_piece['title'],
+    'description': sample_piece['description'],
+    'price': sample_piece['price'],
+    'url': sample_piece['url']
+    
+}
+
+class ArtTests(TestCase):
+    """Flask tests."""
+
+    def setUp(self):
+        """Stuff to do before every test."""
+
+        # Get the Flask test client
+        self.client = app.test_client()
+
+        # Show Flask errors that happen during tests
+        app.config['TESTING'] = True
+
+    def test_index(self):
+        result = self.client.get('/')
+        self.assertEqual(result.status, '200 OK')
+        
+    def test_new(self):
+        result = self.client.get('/art/new')
+        self.assertEqual(result.status, '200 OK')
+
+    @mock.patch('pymongo.collection.Collection.find_one')
+    def test_show_art(self, mock_find):
+        """Test showing a single playlist."""
+        mock_find.return_value = sample_piece
+
+        result = self.client.get(f'/art/{sample_piece_id}')
+        self.assertEqual(result.status, '200 OK')
+
+    @mock.patch('pymongo.collection.Collection.update_one')
+    def test_update_art(self, mock_update):
+        result = self.client.post(f'/art/{sample_piece_id}', data=sample_form_data)
+
+        self.assertEqual(result.status, '302 FOUND')
+        mock_update.assert_called_with({'_id': sample_piece_id}, {'$set': sample_piece})
+        
+    @mock.patch('pymongo.collection.Collection.delete_one')
+    def test_delete_piece(self, mock_delete):
+        form_data = {'_method': 'DELETE'}
+        result = self.client.post(f'/art/{sample_piece_id}/delete', data=form_data)
+        self.assertEqual(result.status, '302 FOUND')
+        mock_delete.assert_called_with({'_id': sample_piece_id})
+    
+if __name__ == '__main__':
+    unittest_main()
