@@ -3,12 +3,13 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
+#mongo DB and hosting
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 pieces = db.pieces
 
-
+#Flask app
 app = Flask(__name__)
 
 @app.route('/')
@@ -61,6 +62,7 @@ def chips_edit(piece_id):
     return render_template('art_edit.html', piece=piece)
 
 @app.route('/art/<piece_id>/delete', methods=['POST'])
+#Delete post method
 def pieces_delete(piece_id):
     pieces.delete_one({'_id': ObjectId(piece_id)})
     return redirect(url_for('art_index'))
