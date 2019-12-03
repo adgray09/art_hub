@@ -6,10 +6,10 @@
     <button><a href='/art/new'>Add your Art!</a></button>
 
     {% if art_items %}
-        {% for art in art_items %}
-        <h3><a href='/art/{{ art._id }}'>{{ art.title }}</a></h3>
-            <small>{{ art.description }}</small>
-            <small>{{ art.price }}</small>
+        {% for piece in art_items %}
+        <h3><a href='/art/{{ piece._id }}'>{{ piece.title }}</a></h3>
+            <small>{{ piece.description }}</small>
+            <small>{{ piece.price }}</small>
         {% endfor %}
     {% endif %}
 {% endblock %}
