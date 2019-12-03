@@ -2,31 +2,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/art'>
-    <fieldset>
-    <legend>New Art Piece</legend>
-    <!-- TITLE -->
-    <p>
-        <label for='title'>Title</label><br>
-        <input type='text' name='title' />
-    </p>
-    <p>
-        <label for='description'>Description of Art</label><br>
-        <input type='text' name='description' />
-    </p>
-    <p>
-        <label for="price">Price</label><br>
-        <input type='text' name='price' />
-    </p>
-    <p> 
-        <h3>add a photo link of your art</h3>
-        <label for='url'>URL</label>
-        <input type='url' name='url' />
-    </p>
-    </fieldset>
-    <!-- BUTTON -->
-    <p>
-        <button type='submit'>Save Your Artwork</button>
-    </p>
-</form>
+<div class="container d-flex justify-content-center">
+    <form method='POST' action='/art'>
+        <fieldset>
+            <legend>New Art Piece</legend>
+            <!-- TITLE -->
+            <p>
+                <label for='title'>Title</label><br>
+                <input type='text' name='title' />
+            </p>
+            <p>
+                <label for='description'>Description of Art</label><br>
+                <input type='text' name='description' />
+            </p>
+            <p>
+                <label for="price">Price</label><br>
+                <input type='text' name='price' />
+            </p>
+            <p> 
+                <h4>add a photo link of your art</h4>
+                <label for='url'>URL</label><br>
+                <input type='url' name='url' />
+            </p>
+        </fieldset>
+        <!-- BUTTON -->
+        <p>
+            <button type='submit'>Save Your Artwork</button>
+        </p>
+    </form>
+</div>
 {% endblock %}
