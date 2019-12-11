@@ -8,7 +8,7 @@
             <h3>Item</h3>
         </div>
         <div class="col-sm">
-            <h3>Unit price</h3>
+            <h3>Listed price</h3>
         </div>
         <div class="col-sm">
 
@@ -28,7 +28,9 @@
                     <h3>{{ item.price }}$</h3>
                 </div>
                 <div class="col-sm">
-
+                    <form method='POST' action='/art/{{ item._id }}/delete'>
+                        <button class='btn btn-primary' type='submit'>Delete</button>
+                    </form>
                 </div> 
             </div>
         </div>

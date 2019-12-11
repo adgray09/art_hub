@@ -68,6 +68,12 @@ def pieces_delete(piece_id):
     pieces.delete_one({'_id': ObjectId(piece_id)})
     return redirect(url_for('art_index'))
 
+@app.route('/art/<item_id>/delete', methods=['POST'])
+#delete item from cart
+def cart_delete(item_id):
+    cart.delete_one({'_id': ObjectId(item_id)})
+    return redirect(url_for('cart_index'))
+    
 @app.route('/art/<piece_id>/cart', methods=['POST'])
 #add item to cart
 def add_to_cart(piece_id):
