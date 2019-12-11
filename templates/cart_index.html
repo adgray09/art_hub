@@ -3,9 +3,36 @@
 {% block content %}
     {% if cart_items %}
         {% for item in cart_items %}
-            <h1>{{ item.title }}</h1>
+        <h1>My shopping cart</h1>
+        <div class="container-fluid mt-5">
+        <div class="row">
+                <div class="col-sm">
+                    <h3>Item</h3>
+                </div>
+                <div class="col-sm">
+                    <h3>Unit price</h3>
+                </div>
+                <div class="col-sm">
+
+                </div>   
+            </div>
+        </div>
+        <hr>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm">
+                    <h3>{{ item.title }}</h3>
+                    <img class='center' width="200" height="200" src="{{ item.url }}"></img>
+                </div>
+                <div class="col-sm">
+                </div>
+                <div class="col-sm">
+
+                </div>   
+            </div>
+        </div>
         {% else %}
-            <h1>no item here</h1>
+            <h1>Cart empty</h1>
         {% endfor %}
     {% endif %}
 {% endblock %}
