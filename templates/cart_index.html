@@ -11,7 +11,7 @@
             <h3>Listed price</h3>
         </div>
         <div class="col-sm">
-
+            <h3>Remove from cart</h3>
         </div>   
     </div>
 </div>
@@ -22,14 +22,14 @@
             <div class="row">
                 <div class="col-sm">
                     <h3><a href='/art/{{ item._id }}'>{{ item.title }}</a></h3>
-                    <img class='center border rounded border-dark' width="200" height="200" src="{{ item.url }}"></img>
+                    <img class='center border rounded border-dark' width="200" height="150" src="{{ item.url }}"></img>
                 </div>
                 <div class="col-sm">
                     <h3>{{ item.price }}$</h3>
                 </div>
                 <div class="col-sm">
                     <form method='POST' action='/art/{{ item._id }}/delete'>
-                        <button class='btn btn-primary' type='submit'>Delete</button>
+                        <button style="position: relative; bottom: -150px" class='btn btn-primary' type='submit'>Delete</button>
                     </form>
                 </div> 
             </div>
