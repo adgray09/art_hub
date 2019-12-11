@@ -8,6 +8,7 @@ host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/Contractor')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 pieces = db.pieces
+cart = db.cart
 
 #Flask app
 app = Flask(__name__, static_url_path='')
@@ -66,6 +67,24 @@ def chips_edit(piece_id):
 def pieces_delete(piece_id):
     pieces.delete_one({'_id': ObjectId(piece_id)})
     return redirect(url_for('art_index'))
+
+@app.route('/art/<piece_id>/cart', methods=['POST'])
+#add item to cart
+def add_to_cart(piece_id):
+    piece = pieces.find_one({'_id': ObjectId(piece_id)})
+    item = {
+        'title': piece["title"],
+        'description': piece["description"],
+        'price': piece["price"],
+        'url': piece["url"],
+    }
+    cart.insert_one(item)
+    return redirect(url_for('cart_index'))
+    
+@app.route('/art/cart')
+def cart_index():
+    cart_items = cart.find()
+    return render_template('cart_index.html', cart_items=cart_items)
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
