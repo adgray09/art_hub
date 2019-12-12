@@ -1,37 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1 class="mt-3">My shopping cart</h1>
-<div class="container-fluid mt-4">
-<div class="row">
-        <div class="col-sm">
-            <h3>Item</h3>
+<div class="container">
+    <h1 class="mt-3">My shopping cart</h1>
+    <div class="container-fluid mt-4">
+    <div class="row">
+            <div class="col-sm">
+                <h3>Item</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Listed price</h3>
+            </div>
+            <div class="col-sm">
+                <h3>Remove from cart</h3>
+            </div>   
         </div>
-        <div class="col-sm">
-            <h3>Listed price</h3>
-        </div>
-        <div class="col-sm">
-            <h3>Remove from cart</h3>
-        </div>   
     </div>
 </div>
 <hr color="black">
     {% if cart_items %}
         {% for item in cart_items %}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm">
-                    <h3><a href='/art/{{ item.item_id }}'>{{ item.title }}</a></h3>
-                    <img class='center border rounded border-dark' width="200" height="150" src="{{ item.url }}"></img>
+        <div class="container">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm">
+                        <h3><a href='/art/{{ item.item_id }}'>{{ item.title }}</a></h3>
+                        <img class='center border rounded border-dark' width="200" height="150" src="{{ item.url }}"></img>
+                    </div>
+                    <div class="col-sm">
+                        <h3>{{ item.price }}$</h3>
+                    </div>
+                    <div class="col-sm">
+                        <form method='POST' action='/cart/{{ item._id }}/delete'>
+                            <button style="position: relative; bottom: -150px" class='btn btn-primary' type='submit'>Delete</button>
+                        </form>
+                    </div> 
                 </div>
-                <div class="col-sm">
-                    <h3>{{ item.price }}$</h3>
-                </div>
-                <div class="col-sm">
-                    <form method='POST' action='/cart/{{ item._id }}/delete'>
-                        <button style="position: relative; bottom: -150px" class='btn btn-primary' type='submit'>Delete</button>
-                    </form>
-                </div> 
             </div>
         </div>
         <hr>

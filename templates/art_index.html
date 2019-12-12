@@ -6,21 +6,27 @@
 
     {% if art_items %}
         {% for piece in art_items %}
-        <div class="card container mb-5 mt-5 card-body">
-            <div class=row>
-                <div class=col-sm>
-                    <img class='center' width="400" height="270" src="{{ piece.url }}"></img>
+    <div class="card container text-center mt-5" style="width: 18rem;">
+        <div class="row justify-content-center">
+            <div style="display: inline-block">
+                <img src="{{ piece.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><a href='/art/{{ piece._id }}'>{{ piece.title }}</a></h5>
+                    <p class="card-text">{{ piece.description|safe|truncate(200) }}</p>
                 </div>
-            <div class=col-sm>
-                <h1><a href='/art/{{ piece._id }}'>{{ piece.title }}</a></h3>
-                <p class="hello"> piece description: {{ piece.description|safe|truncate(400) }}</p>
-            </div>
-            <div>
-                <small> price: {{ piece.price }}$</small>
-            </div>
-                
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
             </div>
         </div>
+    </div>
+        
         {% endfor %}
     {% endif %}
 {% endblock %}
