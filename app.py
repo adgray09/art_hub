@@ -86,7 +86,7 @@ def add_to_cart(piece_id):
         'item_id': piece["_id"],
     }
     cart.insert_one(item)
-    return redirect(url_for('cart_index', piece_id=piece_id))
+    return redirect(url_for('art_index', piece_id=piece_id))
     
 @app.route('/art/cart')
 #cart page
