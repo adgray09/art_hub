@@ -68,7 +68,7 @@ def pieces_delete(piece_id):
     pieces.delete_one({'_id': ObjectId(piece_id)})
     return redirect(url_for('art_index'))
 
-@app.route('/art/<item_id>/delete', methods=['POST'])
+@app.route('/cart/<item_id>/delete', methods=['POST'])
 #delete item from cart
 def cart_delete(item_id):
     cart.delete_one({'_id': ObjectId(item_id)})
@@ -83,11 +83,13 @@ def add_to_cart(piece_id):
         'description': piece["description"],
         'price': piece["price"],
         'url': piece["url"],
+        'item_id': piece["_id"],
     }
     cart.insert_one(item)
-    return redirect(url_for('cart_index'))
+    return redirect(url_for('cart_index', piece_id=piece_id))
     
 @app.route('/art/cart')
+#cart page
 def cart_index():
     cart_items = cart.find()
     return render_template('cart_index.html', cart_items=cart_items)
