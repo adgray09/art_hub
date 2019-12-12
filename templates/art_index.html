@@ -6,22 +6,24 @@
 
     {% if art_items %}
         {% for piece in art_items %}
-    <div class="card container text-center mt-5" style="width: 18rem;">
+    <div class="card container text-center mt-5" style="width: 26rem;">
         <div class="row justify-content-center">
             <div style="display: inline-block">
-                <img src="{{ piece.url }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><a href='/art/{{ piece._id }}'>{{ piece.title }}</a></h5>
-                    <p class="card-text">{{ piece.description|safe|truncate(200) }}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                <img src="{{ piece.url }}" class="card-img-top" alt="..." height="500px" width="auto">
+                <div class="col-sm">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href='/art/{{ piece._id }}'>{{ piece.title }}</a></h5>
+                        <p class="card-text">{{ piece.description|safe|truncate(200) }}</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                    <div class="card-body">
+                        <a href="#" class="card-link">Link</a>
+                        <a href="#" class="card-link">Link</a>
+                    </div>
                 </div>
             </div>
         </div>
