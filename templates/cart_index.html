@@ -2,9 +2,9 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="mt-3">My shopping cart</h1>
+    <h1 style="text-align: center" class="mt-3">My shopping cart</h1>
     <div class="container-fluid mt-4">
-    <div class="row">
+    <div class="mt-5 row">
             <div class="col-sm">
                 <h3>Item</h3>
             </div>
@@ -40,7 +40,7 @@
         </div>
         <hr>
         {% else %}
-            <h1>Cart empty</h1>
+            <h1 class="mt-5" style="text-align: center;">your cart is empty</h1>
         {% endfor %}
     {% endif %}
 {% endblock %}
