@@ -6,6 +6,7 @@
         <div class="row">
             <div class="col-sm">
                 <h1>{{ piece.title }}</h1>
+                <h4>${{ piece.price }}</h4>
                 <img class='center' width="500" height="400" src="{{ piece.url }}"></img>
                 <p> 
                     <a href='/art/{{ piece._id }}/edit'>Edit</a><br>
@@ -26,8 +27,7 @@
                                 {{ piece.description }}
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
