@@ -2,31 +2,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST' action='/art/{{ piece._id }}'>
-    <fieldset>
-    <legend>Edit submission</legend>
-    <!-- TITLE -->
-    <p>
-        <label for='title'>Title</label><br>
-        <input type='text' name='title' value='{{ piece.title }}'/>
-    </p>
-    <p>
-        <label for='description'>Description of Art</label><br>
-        <input type='text' name='description' value='{{ piece.description }}' />
-    </p>
-    <p>
-        <label for="price">Price</label><br>
-        <input type='text' name='price' value='{{ piece.price }}'/>
-    </p>
-    <p> 
-        <h3>add a photo link of your art</h3>
-        <label for='url'>URL</label>
-        <input type='url' name='url' value='{{ piece.url }}'/>
-    </p>
-    </fieldset>
-    <!-- BUTTON -->
-    <p>
-        <button type='submit'>Save Edit</button>
-    </p>
-</form>
+<div class="container mt-4 d-flex justify-content-center">
+    <form method='POST' action='/art/{{ piece._id }}'>
+        <fieldset>
+        <legend>Edit submission</legend>
+        <!-- TITLE -->
+        <p>
+            <label for='title'>Title</label><br>
+            <input type='text' name='title' value='{{ piece.title }}'/>
+        </p>
+        <p>
+            <label for='description'>Description of Art</label><br>
+            <input type='text' name='description' value='{{ piece.description }}' />
+        </p>
+        <p>
+            <label for="price">Price</label><br>
+            <input type='text' name='price' value='{{ piece.price }}'/>
+        </p>
+        <p> 
+            <h4>add a photo link of your art</h4>
+            <label for='url'>URL</label><br>
+            <input type='url' name='url' value='{{ piece.url }}'/>
+        </p>
+        </fieldset>
+        <!-- BUTTON -->
+        <p>
+            <button type='submit'>Save Edit</button>
+        </p>
+    </form>
+</div>
 {% endblock %}
