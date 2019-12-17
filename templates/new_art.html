@@ -17,12 +17,13 @@
             </p>
             <p>
                 <label for="price">Price</label><br>
-                <input type='text' name='price' />
+                <input type='number' name='price' pattern=/>
             </p>
             <p> 
                 <h4>add a photo link of your art</h4>
                 <label for='url'>URL</label><br>
-                <input type='url' name='url' />
+                <input type='url' name='url' pattern="https://.*" size="30"
+                required>
             </p>
         </fieldset>
         <!-- BUTTON -->
